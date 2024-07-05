@@ -10,31 +10,24 @@ mat = [
 
 def key_operations(key):
     if key=='W' or key=='w':
-        print('W is entered')
+        key_operations_module.rotate_matrix_anti_clockwise(mat)
+        key_operations_module.operation(mat, key)
+        key_operations_module.rotate_matrix_clockwise(mat)
             
     if key=='A' or key=='a':
         key_operations_module.operation(mat, key)
 
     if key=='S' or key=='s':
-        print('S is entered')
+        key_operations_module.rotate_matrix_clockwise(mat)
+        key_operations_module.operation(mat, key)
+        key_operations_module.rotate_matrix_anti_clockwise(mat)
 
     if key=='D' or key=='d':
+        key_operations_module.rotate_matrix_clockwise(mat)
+        key_operations_module.rotate_matrix_clockwise(mat)
         key_operations_module.operation(mat, key)
-
-def check_mat_full():
-    #check for moves that still be performed
-    mat_full = True
-
-    for row in range(0,4):
-        for col in range(0,4):
-            if mat[row][col] == 0:
-                mat_full = False
-                break
-        else:
-            continue
-        break
-
-    return mat_full
+        key_operations_module.rotate_matrix_clockwise(mat)
+        key_operations_module.rotate_matrix_clockwise(mat)
 
 def add_random_num():
     row = random.randint(0,3)
@@ -53,10 +46,9 @@ def print_mat():
         print()
 
 if __name__ == "__main__":
-    while(not check_mat_full()):
+    while(not key_operations_module.check_mat_full(mat)):
         key = input('\nEnter W,A,S,D: ')
         key_operations(key)        
         add_random_num()
         print_mat()
-
     print('Game over noob, you lost loser')
