@@ -1,3 +1,18 @@
+def check_mat_full(mat):
+    #check for moves that still be performed
+    mat_full = True
+
+    for row in range(0,4):
+        for col in range(0,4):
+            if mat[row][col] == 0:
+                mat_full = False
+                break
+        else:
+            continue
+        break
+
+    return mat_full
+
 def rotate_matrix_clockwise(mat):
     #rotate outer row
     mat[0][0], mat[0][3], mat[3][3], mat[3][0] = mat[3][0], mat[0][0], mat[0][3], mat[3][3]

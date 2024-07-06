@@ -47,7 +47,7 @@ def print_mat():
         print()
 
 if __name__ == "__main__":
-    while(not key_operations_module.check_mat_full(mat)):
+    while(not matrix_operations.check_mat_full(mat)):
         key = input('\nEnter W,A,S,D: ')
         key_operations(key)        
         add_random_num()
