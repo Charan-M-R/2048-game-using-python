@@ -46,10 +46,39 @@ def print_mat():
             print(mat[row][col], end=' ')
         print()
 
+def check_game_over(mat):
+    if not matrix_operations.check_mat_full(mat):
+        return []
+        
+    forbidden_operations = ['w','a','s','d']
+    for i in range(0,4):
+        if mat[i][0] == mat[i][1] or mat[i][1] == mat[i][2] or mat[i][2] == mat[i][3]:
+            forbidden_operations.remove('a')
+            forbidden_operations.remove('d')
+            break
+    for i in range(0,4):
+        if mat[0][i] == mat[1][i] or mat[1][i] == mat[2][i] or mat[2][i] == mat[3][i]:
+            forbidden_operations.remove('s')
+            forbidden_operations.remove('w')
+            break
+
+    return forbidden_operations
+
 if __name__ == "__main__":
-    while(not matrix_operations.check_mat_full(mat)):
+    forbidden_operations = []
+    while forbidden_operations != ['w','a','s','d']:
         key = input('\nEnter W,A,S,D: ')
+
+        if key.lower() in forbidden_operations:
+            print('Please enter another key\n')
+            continue
+
+        if key.lower() not in ['w','a','s','d']:
+            print('Please enter a valid key\n')
+            continue
+
         key_operations(key)        
         add_random_num()
         print_mat()
-    print('Game over noob, you lost loser')
+        forbidden_operations = check_game_over(mat)
+    print('Game over, your score is:', max(max(mat[0]), max(mat[1]), max(mat[2]), max(mat[3])) )
