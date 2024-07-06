@@ -1,5 +1,6 @@
 import random
 import key_operations_module
+import matrix_operations
 
 mat = [
     [0,0,0,0],
@@ -10,24 +11,24 @@ mat = [
 
 def key_operations(key):
     if key=='W' or key=='w':
-        key_operations_module.rotate_matrix_anti_clockwise(mat)
+        matrix_operations.rotate_matrix_anti_clockwise(mat)
         key_operations_module.operation(mat, key)
-        key_operations_module.rotate_matrix_clockwise(mat)
+        matrix_operations.rotate_matrix_clockwise(mat)
             
     if key=='A' or key=='a':
         key_operations_module.operation(mat, key)
 
     if key=='S' or key=='s':
-        key_operations_module.rotate_matrix_clockwise(mat)
+        matrix_operations.rotate_matrix_clockwise(mat)
         key_operations_module.operation(mat, key)
-        key_operations_module.rotate_matrix_anti_clockwise(mat)
+        matrix_operations.rotate_matrix_anti_clockwise(mat)
 
     if key=='D' or key=='d':
-        key_operations_module.rotate_matrix_clockwise(mat)
-        key_operations_module.rotate_matrix_clockwise(mat)
+        matrix_operations.rotate_matrix_clockwise(mat)
+        matrix_operations.rotate_matrix_clockwise(mat)
         key_operations_module.operation(mat, key)
-        key_operations_module.rotate_matrix_clockwise(mat)
-        key_operations_module.rotate_matrix_clockwise(mat)
+        matrix_operations.rotate_matrix_clockwise(mat)
+        matrix_operations.rotate_matrix_clockwise(mat)
 
 def add_random_num():
     row = random.randint(0,3)
